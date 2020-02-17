@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<h2>
+GMH_FrontEndSp20_MahmudHasan_HW#1
+</h2>
+<body onload="Clear_Input()">
+<table>
+<!-- First row of the table-->
+<tr> 
+<th> Item </th>
+<th> Quantity </th>
+<th> Unit Price </th>
+<th> Total Item Price </th>
+</tr>
+<!-- Second row of the table-->
+<tr> 
+<td> Shirt </td>
+<td>
+  <form>
+  <!-- Handles the quantity of an item to input-->
+     <input type="number" id="q1" min="1" value="1" onchange="Update()" />
+  </form>
+</td>
+<td> 
+  <form>
+    <!-- Handles the price input-->
+     <label>$</label>
+     <input type="text" id="p1" onchange="Update()"/>
+  </form>
+</td>
+<td>
+  <label>$</label>
+  <input type="text" id="result1" readonly="readonly" />
+</td>
+</tr>
+<!-- Third row of the table-->
+<tr> 
+<td> Shoes </td>
+<td> 
+  <form>
+    <!-- Handles the quantity of an item to input-->
+     <input type="number" id="q2" min="1" value="1" onchange="Update()"/>
+  </form>
+</td>
+<td> 
+  <form>
+      <!-- Handles the price input-->
+     <label>$</label>
+     <input type="text" id="p2" onchange="Update()"/>
+  </form>
+</td>
+<td>
+  <label>$</label>
+  <input type="text" id="result2" readonly="readonly"/>
+</td>
+</tr>
+
+<!-- Fourth row of the table-->
+<tr>
+  <td colspan="3">
+    Total
+  </td>
+  <td>
+    <label>$</label>
+    <input type="text" id="final" readonly="readonly"/>
+  </td>
+</tr>
+
+</table>
+<p>
+ Click here to get total price:<input type="button" id="total" value="Total Price" onclick="Total_Price();" />
+</p>
+</body>
+
+<script>
+  var tp1;
+  var tp2;
+  function Update()
+  {
+   var q1 = document.getElementById("q1").value;
+   var p1 = document.getElementById("p1").value;
+   var q2 = document.getElementById("q2").value;
+   var p2 = document.getElementById("p2").value;
+
+   tp1 = document.getElementById("result1").value = Calc_Price(q1,p1);
+   tp2 = document.getElementById("result2").value = Calc_Price(q2,p2);
+
+  }
+  function Calc_Price(q,p)
+  {
+    return q*p;
+  }
+
+  function Total_Price()
+  {
+    document.getElementById("final").value = tp1+tp2;
+  }
+
+function Clear_Input()
+{
+  document.getElementById("q1").value = 1;
+  document.getElementById("p1").value = 0;
+  document.getElementById("q2").value = 1;
+  document.getElementById("p2").value = 0;
+  document.getElementById("result1").value = 0;
+  document.getElementById("result2").value = 0;
+  document.getElementById("final").value = 0;
+}
+</script>
+
+<!--CSS for the Border-->
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
